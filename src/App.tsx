@@ -18,6 +18,7 @@ export default function App() {
   const [sum, setSum] = useState(0);
   const [table, setTable] = useState<JSX.Element | null>(<div />);
   const [extras, setExtras] = useState(0);
+  const [hide, setHide] = useState(false);
 
   const today = new Date();
   const year = today.getFullYear();
@@ -145,6 +146,10 @@ export default function App() {
           onChange={handleDateChange}
           value={dateRange.to}
         />
+        <label>
+          <input type="checkbox" onChange={(e) => setHide(e.target.checked)} />
+          Hide
+        </label>
         <ul>
           <li>SUM: {formatMoney(sum * -1)}</li>
           <li>DIVIDED: {formatMoney((sum / 2) * -1)}</li>
@@ -160,7 +165,7 @@ export default function App() {
           <li>TOTAL: {formatMoney((sum / 2) * -1 + extras)}</li>
         </ul>
       </header>
-      <div className="table-container">
+      <div className={`table-container${hide ? ' hide' : ''}`}>
         <ul className="row">
           <li>Remove</li>
           <li>Date</li>

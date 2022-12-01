@@ -52,6 +52,10 @@ header {
   text-align: right;
 }
 
+.hide .row:has(input:checked) {
+  display: none;
+}
+
 input[type='checkbox'] {
   width: 32px;
   height: 32px;
